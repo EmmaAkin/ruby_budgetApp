@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
-  has_secure_password
+class Expenses< ActiveRecord::Base
+  belongs_to :expenses_category, counter_cache: true
   # Remember to create a migration!
 end

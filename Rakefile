@@ -1,4 +1,5 @@
 require 'rake'
+require 'byebug'
 
 require ::File.expand_path('../config/environment', __FILE__)
 

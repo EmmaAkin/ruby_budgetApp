@@ -6,6 +6,10 @@
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
   -->
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
   <link rel="stylesheet" href="/css/normalize.css">
   <!--
     application.css is where you put your styles
@@ -17,7 +21,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title> <%title%></title>
+  <title> <% @title %></title>
 </head>
 <body>
 <div id="content">
@@ -25,7 +29,7 @@
     <a href="/"><img src="/img/zenchinese.png" class="logo"></a>
     <div id="login-toolbar">
       <% if current_user %>
-        <a href="/logout">Logout</a>
+         <a href="/logout">Logout</a>
       <% else %>
         <a href="/login">Login</a>
       <% end %>

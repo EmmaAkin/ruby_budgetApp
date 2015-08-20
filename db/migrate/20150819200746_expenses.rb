@@ -4,6 +4,7 @@ class Expenses < ActiveRecord::Migration
       t.string :title, null: false
       t.string :period, default: "Monthly"
       t.integer :amount,  default: 0
+       t.string :expenses_category, null: false, default: "Others"
 
       t.timestamps(null: false)
     end
