@@ -7,27 +7,35 @@
 
   <tr><form action="/update/new/incomes" method="POST">
             <input name="_method" type="hidden" value="put" />
-                    <td>
-                     <div class="form-group input-group col-xs-9 col-md-6"  >
-                        <input type="text" class="form-control input-sm amount income-amount ng-pristine ng-valid" name="title"/>
-                    </div>
 
-                <div class="form-group input-group col-xs-3 col-md-2 bp-no-padding"  >
+            <td name="title">
+
+                    <div class="form-group input-group col-xs-6 bp-no-padding"  >
+                        <input type="text" class="form-control input-sm amount income-amount ng-pristine ng-valid" name="amount"/>
+                    </div>
+           </td>
+
+
+            <td  name="title">
+                <div class="form-group input-group col-xs-4 bp-no-padding"  >
                     <span class="input-group-addon dollar-add-on">$</span>
-                    <input type="text" class="form-control input-sm amount income-amount ng-pristine ng-valid" name="amount"/>
+                    <input type="text" class="form-control input-sm amount income-amount ng-pristine ng-valid"/>
                 </div>
-            <div class="form-group input-group col-xs-3 col-md-2 bp-no-padding"  >
-                    <select  class="form-control">Monthly
+            </td>
+
+            <td><div class="form-group input-group col-xs-4 bp-no-padding"  >
+                    <select  class="form-control">
                             <option name="period" value ="Monthly" >Monthly</option>
                             <option name="period" value="Quarterlyly">Quarterly</option>
                             <option name="period" value="Yearly">Yearly</option>
                     </select>
                     </div>
-            <div class="form-group input-group col-xs-3 col-md-2 bp-no-padding"  >
-                            <button type="submit" class="btn btn-primary" name="ok">ADD INCOME</button>
-                            <br> </div>
-                    </form></td>
+            </td>
 
+            <td>
+                            <button type="submit" class="btn btn-primary" name="ok">ADD INCOME</button>
+                            <br> </td>
+                    </form>
           </tr>
 
 </tbody>
@@ -68,7 +76,13 @@
                     </form>
             </td>
            </tr>
+           <tr>
+           <div class="form-group input-group col-xs-6 bp-no-padding"  >
+                    <span class="input-group-addon dollar-add-on">$</span>
+                    <input type="text" class="form-control input-sm amount income-amount ng-pristine ng-valid" name="amount" value="<%= @sum_of_income %>" />
+                </div>
 
+                            </tr>
 
 </tbody> <% end %>
 

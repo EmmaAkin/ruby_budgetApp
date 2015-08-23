@@ -1,7 +1,26 @@
+require 'byebug'
 def current_user
-  if session[:user_id]
-    return User.find(session[:user_id])
+
+  if !session[:username]
+        "guest"
   else
-    return nil
-  end
+        return session[:username]
+   end
 end
+
+
+  def login
+    if session[:username].nil?
+    #  return false
+
+    redirect '/logout'
+    else
+      return true
+    end
+  end
+
+
+
+
+
+

@@ -21,7 +21,7 @@ RSpec.configure do |config|
    DatabaseCleaner.strategy = :transaction
    DatabaseCleaner.clean_with(:truncation)
   end
-   
+
   config.around(:each) do |example|
     DatabaseCleaner.cleaning do
        example.run
@@ -31,4 +31,12 @@ end
 
 def app
   Sinatra::Application
+end
+
+
+RSpec.describe "Binary Search Tests" do
+  context "Binary Search to traverse an ordered list, effectively" do
+
+            currrent_users
+        end
 end

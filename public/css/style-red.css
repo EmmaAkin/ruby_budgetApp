@@ -1,6 +1,6 @@
 /*=============================================================
     Authour URL: www.designbootstrap.com
-    
+
     http://www.designbootstrap.com/
 
     License: MIT
@@ -10,7 +10,7 @@
     100% Free To use For Personal And Commercial Use.
 
     IN EXCHANGE JUST TELL PEOPLE ABOUT THIS WEBSITE
-   
+
 ========================================================  */
 
 
@@ -37,7 +37,10 @@ padding-bottom: 40px;
 }
 
 .pad-bottom {
-padding-bottom: 60px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .header {
@@ -51,6 +54,9 @@ width: 50px;
 border-top: 2px solid rgb(228, 79, 79);
 }
 
+.article {
+    padding: 10px 20px 20px 10px;
+}
 
 /* =============================================================
 CUSTOM BUTTON STYLES

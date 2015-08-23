@@ -1,3 +1,3 @@
 class ExpensesCategory < ActiveRecord::Base
-  # Remember to create a migration!
+  # Reuser to create a migration!
 end
