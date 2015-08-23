@@ -17,10 +17,10 @@
                     <input type="text" class="form-control input-sm amount income-amount ng-pristine ng-valid" name="amount"/>
                 </div>
             <div class="form-group input-group col-xs-3 col-md-2 bp-no-padding"  >
-                    <select  class="form-control">Monthly
-                            <option name="period" value ="Monthly" >Monthly</option>
-                            <option name="period" value="Quarterlyly">Quarterly</option>
-                            <option name="period" value="Yearly">Yearly</option>
+                    <select  class="form-control" name="period" >
+                            <option value ="Monthly" >Monthly</option>
+                            <option  value="Quarterly">Quarterly</option>
+                            <option  value="Yearly">Yearly</option>
                     </select>
                     </div>
             <div class="form-group input-group col-xs-3 col-md-2 bp-no-padding"  >
@@ -50,11 +50,12 @@
                     </form>
             </td>
             <td>
-                    <select  class="form-control">
-                            <option name="period" value ="<%= incomes.period %>" ><%= incomes.period %></option>
-                            <option name="period" value="Quarterly">Monthly</option>
-                            <option name="period" value="Quarterly">Quarterly</option>
-                            <option name="period" value="Yearly">Yearly</option>
+                    <select  class="form-control" name="period">
+
+                            <option  value="<%= incomes.period %>"><%= incomes.period %></option>
+                            <option  value="Monthly">Monthly</option>
+                            <option  value="Quarterly">Quarterly</option>
+                            <option value="Yearly">Yearly</option>
                     </select>
             </td>
 
@@ -102,10 +103,11 @@
                     </form>
             </td>
             <td>
-                    <select  class="form-control">
-                            <option name="period" value ="<%= expenses.period %>" ><%= expenses.period %></option>
-                            <option name="period" value="Quarterlyly">Quarterly</option>
-                            <option name="period" value="Yearly">Yearly</option>
+                    <select  class="form-control" name="period">
+                            <option  value ="<%= expenses.period %>" ><%= expenses.period %></option>
+                            <option  value="Monthly">Monthly</option>
+                            <option  value="Quarterly">Quarterly</option>
+                            <option value="Yearly">Yearly</option>
                     </select>
             </td>
 

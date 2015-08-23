@@ -91,10 +91,10 @@ end
 
 put '/update/incomes/:id' do |expense_id|
     #Delete the expenses
-byebug
+
        if session[:commit] == 'del'
            Expense.destroy(params[:id])
-
+           byebug
            # If the update key is press this action is executed
        elsif session[:commit] == 'update'
    byebug
