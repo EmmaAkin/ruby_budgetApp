@@ -1,4 +1,4 @@
-> **Note**: This is a basic calculates and analyses budgets enter by a user
+> **Note**: This is a basically help to calculate and analyses budgets enter by a user
 
 ### Purpose
 The Budget App:
