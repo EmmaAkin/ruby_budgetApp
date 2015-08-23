@@ -1,5 +1,3 @@
-
-
 <table class="table table-striped">
 
  <tbody>
@@ -8,26 +6,27 @@
   <tr><form action="/update/new/incomes" method="POST">
             <input name="_method" type="hidden" value="put" />
                     <td>
-                     <div class="form-group input-group col-xs-9 col-md-6"  >
-                        <input type="text" class="form-control input-sm amount income-amount ng-pristine ng-valid" name="title"/>
-                    </div>
+                     <input type="text" class="form-control input-sm amount income-amount ng-pristine ng-valid" name="title" value="Accomodation"/>
+                    </td>
 
-                <div class="form-group input-group col-xs-3 col-md-2 bp-no-padding"  >
+                <td>
                     <span class="input-group-addon dollar-add-on">$</span>
                     <input type="text" class="form-control input-sm amount income-amount ng-pristine ng-valid" name="amount"/>
-                </div>
-            <div class="form-group input-group col-xs-3 col-md-2 bp-no-padding"  >
+                 </td>
+
+                <td>
+                     <div class="form-group input-group col-xs-6 bp-no-padding tex-right">
                     <select  class="form-control" name="period" >
                             <option value ="Monthly" >Monthly</option>
                             <option  value="Quarterly">Quarterly</option>
                             <option  value="Yearly">Yearly</option>
                     </select>
                     </div>
-            <div class="form-group input-group col-xs-3 col-md-2 bp-no-padding"  >
+                     </td>
+                          <td>
                             <button type="submit" class="btn btn-primary" name="ok">ADD INCOME</button>
-                            <br> </div>
-                    </form></td>
-
+                           </td>
+                    </form>
           </tr>
 
 </tbody>
@@ -39,15 +38,15 @@
    <th>INCOME</th><th>AMOUNT</th><th>DURATION</th><th>action</th>
  </tr>
  </thead>
-  <tbody> <% @incomes.each do |incomes| %>
-  <tr>
-            <td name="title"><%= incomes.title %></td>
-            <td> <form action="/update/incomes/<%= incomes.id %>" method="POST">
+  <tbody>
+  <tr><% @incomes.each do |incomes| %>
+            <td name="title"><%= incomes.title %></td><form action="/update/incomes/<%= incomes.id %>" method="POST">
+            <td>
                 <div class="form-group input-group col-xs-6 bp-no-padding"  >
                     <span class="input-group-addon dollar-add-on">$</span>
                     <input type="text" class="form-control input-sm amount income-amount ng-pristine ng-valid" name="amount" value="<%= incomes.amount %>" />
                 </div>
-                    </form>
+
             </td>
             <td>
                     <select  class="form-control" name="period">
@@ -60,26 +59,63 @@
             </td>
 
             <td>
-                    <form action="/update/incomes/<%= incomes.id %>" method="POST">
+
                             <input name="_method" type="hidden" value="put" />
                             <button type="submit" class="btn btn-primary" name="commit"  value="update">UPDATE</button>
                             <button type="submit" class="btn glyphicon glyphicon-trash " name="commit" value="del"></button>
 
                             <br>
-                    </form>
+
             </td>
-           </tr>
+           </tr></form><% end %>
 
 
-</tbody> <% end %>
+</tbody>
+<tfoot>
+            <tr>
+                        <td name="total_income">Total yearly Income</td>
+
+                        <td class="text-right"><%= @yearly_incomes %></td>
 
 
-   </tbody>
+            </tr>
+
+  </tfoot>
 </table>
 
+<table class="table table-striped">
+
+ <tbody>
 
 
+  <tr><form action="/update/new/expenses" method="POST">
+            <input name="_method" type="hidden" value="put" />
+                    <td>
+                     <input type="text" class="form-control input-sm  ng-pristine ng-valid" name="title" value="Transportation"/>
+                    </td>
 
+                <td>
+                    <span class="input-group-addon dollar-add-on">$</span>
+                    <input type="text" class="form-control input-sm  ng-pristine ng-valid" name="amount"/>
+                 </td>
+
+                <td>
+                     <div class="form-group input-group col-xs-6 bp-no-padding tex-right">
+                    <select  class="form-control" name="period" >
+                            <option value ="Monthly" >Monthly</option>
+                            <option  value="Quarterly">Quarterly</option>
+                            <option  value="Yearly">Yearly</option>
+                    </select>
+                    </div>
+                     </td>
+                          <td>
+                            <button type="submit" class="btn btn-primary" name="ok">ADD EXPENSES</button>
+                           </td>
+                    </form>
+          </tr>
+
+</tbody>
+</table>
 <table class="table table-striped">
    <thead>
    <tr>
@@ -93,14 +129,14 @@
  <tbody>
 
 <% @expenses.each do |expenses| %>
-  <tr>
+  <tr><form action="/update/expenses/<%= expenses.id %>" method="POST">
             <td name="title"><%= expenses.title %></td>
-            <td> <form action="/update/<%= expenses.id %>" method="POST">
+            <td>
                 <div class="form-group input-group col-xs-6 bp-no-padding"  >
                     <span class="input-group-addon dollar-add-on">$</span>
                     <input type="text" class="form-control input-sm amount income-amount ng-pristine ng-valid" name="amount" value="<%= expenses.amount %>" />
                 </div>
-                    </form>
+
             </td>
             <td>
                     <select  class="form-control" name="period">
@@ -112,23 +148,65 @@
             </td>
 
             <td>
-                    <form action="/update/<%= expenses.id %>" method="POST">
+
                             <input name="_method" type="hidden" value="put" />
                             <button type="submit" class="btn btn-primary" name="ok">UPDATE</button>
                             <button type="submit" class="btn " name="del">DELETE</button>
 
                             <br>
                     </form>
-            </td>
+            </td><% end %>
 
 
-                            </tr>
+            </tr>
+            <tfoot>
+            <tr>
+                        <td name="total_income">Total yearly Expenses</td>
 
-</tbody> <% end %>
+                        <td class="text-right"><%= @yearly_expenses %></td>
 
 
-   </tbody>
+            </tr>
+
+  </tfoot>
+
+</tbody>
+
 </table>
+
+<div class="col-xs-6 col-md-4 bp-no-padding">
+<table class="table table-striped">
+    <thead>
+        <th> TOTAL</th>
+        <th class= "text-right"> AMOUNT</th>
+    </thead>
+    <tbody>
+         <tr>
+                        <td >Total yearly Income</td>
+
+                        <td name="total_income" class="text-right"><%= @yearly_incomes %></td>
+
+
+            </tr>
+
+             <tr>
+                        <td>Total yearly Expenses</td>
+
+                        <td name="total_expenses" class="text-right"><%= @yearly_expenses %></td>
+
+
+            </tr>
+
+             <tr>
+                        <td>Total yearly Savings</td>
+
+                        <td name="total_savings" class="text-right"><%= @yearly_savings %></td>
+
+
+            </tr>
+    </tbody>
+
+</table></div>
 
 
 <script>

@@ -68,36 +68,65 @@ end
 get '/index' do
 
 @title = "BudgetApp"
-
+@yearly_incomes = 0
+ @yearly_expenses = 0
 #THis really need optimization to be able to find the sum total of the different models expense and income
     @expenses = Expense.order(title: :asc)
     @incomes = Income.order(title: :asc)
-    sum = 0
-    @sum_of_expense = @expenses.each do |expense|
 
-          if expense.period == "Monthly"
-                   sum += expense.amount * 12
-          elsif expense.period == "Quarterly"
-                   sum += expense.amount * 12
-          elsif expense.period =="Yearly"
-                   sum += expense.amount * 12
-          else
-        end
-      end
+# Get the yearly savings, income and expenses.
+@incomes.each do |income|
+       if income.period== "Monthly"
+
+        @yearly_incomes += income.amount .to_i* 12
+       elsif income.period== "Quarterly"
+       @yearly_incomes += income.amount.to_i * 3
+       else
+            @yearly_incomes += income.amount.to_i
+       end
+     end
+ @expenses.each do |expense|
+       if expense.period == "Monthly"
+        @yearly_expenses += expense.amount.to_i * 12
+       elsif expense.period == "Quarterly"
+        @yearly_expenses += expense.amount.to_i * 3
+       else
+            @yearly_expenses += expense.amount.to_i
+       end
+    end
+
+@yearly_savings = @yearly_incomes - @yearly_expenses
 
    erb :index
 
 end
 
-put '/update/incomes/:id' do |expense_id|
+put '/update/incomes/:id' do |income_id|
     #Delete the expenses
+    login
+       if params[:commit] == 'del'
+           Income.destroy(params[:id])
 
-       if session[:commit] == 'del'
-           Expense.destroy(params[:id])
-           byebug
            # If the update key is press this action is executed
-       elsif session[:commit] == 'update'
-   byebug
+       elsif params[:commit] == 'update'
+
+       Income.update(params[:id], :amount => params[:amount], :period => params[:period])
+
+        end
+
+
+        redirect "/index"
+  end
+
+  put '/update/expenses/:id' do |expense_id|
+    #Delete the expenses
+    login
+       if params[:commit] == 'del'
+           Expense.destroy(params[:id])
+
+           # If the update key is press this action is executed
+       elsif params[:commit] == 'update'
+
        Expense.update(params[:id], :amount => params[:amount], :period => params[:period])
 
         end
@@ -106,25 +135,11 @@ put '/update/incomes/:id' do |expense_id|
         redirect "/index"
   end
 
-post '/delete/expenses/:id' do |expense_id|
-    #Delete the expenses
-        Expense.destroy(params[:id])
-
-        redirect "/index"
-  end
-
-post '/update/expenses/:id' do |expense_id|
-    #Delete the expenses
-        Expense.update(params[:id], :amount => params[:amount], :period => params[:period])
-
-        redirect "/index"
-  end
-
 
 
 put '/update/new/incomes' do
     #Check if the user is login in"
-
+     login
     check_exists = Income.where(:title => params[:title],:amount =>params[:amount], :period =>params[:period]).count
         if(check_exists == 0)
           #perform insert if book has not been previously added
@@ -157,3 +172,6 @@ put '/update/new/expenses' do
 
         end
 end
+
+
+
